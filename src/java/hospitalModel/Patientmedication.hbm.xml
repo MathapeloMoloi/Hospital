@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-Apr-2017 22:11:12 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hospitalModel.Patientmedication" table="patientmedication" catalog="hospitalsystem" optimistic-lock="version">
+        <id name="drugNo" type="int">
+            <column name="drugNo" />
+            <generator class="assigned" />
+        </id>
+        <property name="drugName" type="string">
+            <column name="drugName" length="20" />
+        </property>
+        <property name="unitPerDay" type="java.lang.Integer">
+            <column name="unitPerDay" />
+        </property>
+        <property name="dosage" type="string">
+            <column name="dosage" length="10" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="startDate" length="0" />
+        </property>
+        <property name="finishDate" type="date">
+            <column name="finishDate" length="0" />
+        </property>
+        <set name="patients" table="patient" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PatientMedication_drugNo" not-null="true" />
+            </key>
+            <one-to-many class="hospitalModel.Patient" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-Apr-2017 22:11:12 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hospitalModel.Patient" table="patient" catalog="hospitalsystem" optimistic-lock="version">
+        <id name="inPatientNo" type="string">
+            <column name="inPatientNo" length="5" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="doctor" class="hospitalModel.Doctor" fetch="select">
+            <column name="Doctor_docNo" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nurse" class="hospitalModel.Nurse" fetch="select">
+            <column name="Nurse_nurseId" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="patientmedication" class="hospitalModel.Patientmedication" fetch="select">
+            <column name="PatientMedication_drugNo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="receptionist" class="hospitalModel.Receptionist" fetch="select">
+            <column name="Receptionist_recepNo" length="5" not-null="true" />
+        </many-to-one>
+        <property name="patientFirstName" type="string">
+            <column name="patientFirstName" length="20" />
+        </property>
+        <property name="patientLastName" type="string">
+            <column name="patientLastName" length="20" />
+        </property>
+        <property name="streetName" type="string">
+            <column name="streetName" length="30" />
+        </property>
+        <property name="houseNo" type="java.lang.Integer">
+            <column name="houseNo" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="15" />
+        </property>
+        <property name="cellphone" type="java.lang.Integer">
+            <column name="cellphone" />
+        </property>
+        <property name="dateOfBirth" type="date">
+            <column name="dateOfBirth" length="0" />
+        </property>
+        <property name="sex" type="java.lang.Character">
+            <column name="sex" length="1" />
+        </property>
+        <property name="maritalStatus" type="java.lang.Character">
+            <column name="maritalStatus" length="1" />
+        </property>
+        <property name="dateRegistration" type="date">
+            <column name="dateRegistration" length="0" />
+        </property>
+        <property name="admissionStatus" type="string">
+            <column name="admissionStatus" length="6" />
+        </property>
+    </class>
+</hibernate-mapping>
